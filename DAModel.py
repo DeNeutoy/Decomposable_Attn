@@ -136,7 +136,7 @@ class DAModel(object):
             grads, _ = tf.clip_by_global_norm(tf.gradients(self.cost, tvars), self.config.max_grad_norm)
 
             #optimizer = tf.train.GradientDescentOptimizer(self.lr)
-            optimizer = tf.train.AdamOptimizer(self.lr)
+            optimizer = tf.train.AdagradOptimizer(self.lr)
             self.train_op = optimizer.apply_gradients(zip(grads, tvars))
 
     def feed_forward_attention(self, attendees):
