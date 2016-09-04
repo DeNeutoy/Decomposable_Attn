@@ -183,7 +183,7 @@ def main(unused_args):
                 print("Epoch: {} Valid Loss: {} Valid Acc: {}".format(i + 1, valid_loss, valid_acc))
 
                 #######    Model Hooks    ########
-                if weights_dir is not None and (trainingStats["val_acc"][i-1] <= valid_acc):
+                if weights_dir is not None and (max(trainingStats["val_acc"]) <= valid_acc):
                     date = "{:%m.%d.%H.%M}".format(datetime.now())
 
                     with open(weights_dir + "/text_summary.txt", "a+") as summary:
